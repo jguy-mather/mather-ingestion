@@ -5,10 +5,13 @@ description: Initialize Environment with Composite Actions
 runs:
   using: composite
   steps:
-    - uses: actions/setup-python@v3
+    - name: setup-python action
+      uses: actions/setup-python@v3
+      shell: bash
       with:
         python-version: '3.8.10'
         # cache: 'pip'
     # Runs a set of commands using the runners shell
     - name: install requirements.txt
+      shell: bash
       run: pip install -r requirements.txt
