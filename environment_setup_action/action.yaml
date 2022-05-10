@@ -5,9 +5,8 @@ description: Initialize Environment with Composite Actions
 runs:
   using: composite
   steps:
-    - name: setup-python action
-      uses: actions/setup-python@v3
-      shell: bash
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.8.10'
         # cache: 'pip'
