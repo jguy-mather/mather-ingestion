@@ -30,7 +30,7 @@ jobs:
     environment: production
 
     # setup envirnment for validation tests
-    - uses: ./.github/workflows/build.yaml
+    uses: ./.github/workflows/build.yaml
 
     # ----------------------------------------------------------------------- #
     # Steps represent a sequence of tasks that will be executed as part of the job
