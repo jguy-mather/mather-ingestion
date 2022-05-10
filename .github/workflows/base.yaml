@@ -49,7 +49,7 @@ jobs:
 
       # validates that we are in virtual environment
       - name: verify venv
-        run: ./__test__/verify_venv.py
+        run: sudo ./__test__/verify_venv.py
 
       # Runs a set of commands using the runners shell
       - name: install requirements.txt
@@ -75,7 +75,7 @@ jobs:
 
       # builds virtual environment for python executables
       - name: build venv
-        run: sudo python -m venv env
+        run: python -m venv env
 
       # activates virtual environment
       - name: activate venv
