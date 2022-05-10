@@ -39,18 +39,18 @@ jobs:
       #     path: ~/.pip
       #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('requirements.txt') }}
 
-      # builds virtual environment for python executables
-      - name: build venv
-        run: python -m venv env
+      # # builds virtual environment for python executables
+      # - name: build venv
+      #   run: python -m venv env
 
-      # activates virtual environment
-      - name: activate venv
-        run: source ./env/bin/activate
+      # # activates virtual environment
+      # - name: activate venv
+      #   run: source ./env/bin/activate
 
-      # validates that we are in virtual environment
-      # /home/runner/work/mather-ingestion/mather-ingestion
-      - name: verify venv
-        run: python ./__test__/verify_venv.py
+      # # validates that we are in virtual environment
+      # # /home/runner/work/mather-ingestion/mather-ingestion
+      # - name: verify venv
+      #   run: python ./__test__/verify_venv.py
 
       # Runs a set of commands using the runners shell
       - name: install requirements.txt
@@ -72,15 +72,6 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: '3.8.10'
-          cache: 'pip'
-
-      # builds virtual environment for python executables
-      - name: build venv
-        run: python -m venv env
-
-      # activates virtual environment
-      - name: activate venv
-        run: source ./env/bin/activate
 
       # Runs a set of commands using the runners shell
       - name: install requirements.txt
@@ -89,7 +80,5 @@ jobs:
     # ----------------------------------------------------------------------- #
 
       # force failure
-      - name: try to fail
-        run: exit 1
-      - name: verify failure
-        run: echo 'did we fail'
+      - name: some test
+        run: python ./__test__/some_test.py
