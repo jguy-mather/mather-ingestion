@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy_Prod
+name: Deploy_Development
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ development ]
   pull_request:
-    branches: [ main ]
+    branches: [ development ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # indicates Github environment specification
-    environment: production
+    environment: development
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -38,6 +38,6 @@ jobs:
 
     # ----------------------------------------------------------------------- #
 
-      # run production-specific tests
-      - name: production test
-        run: python ./__test__/production_test.py
+      # run development-specific tests
+      - name: development test
+        run: python ./__test__/development_test.py
