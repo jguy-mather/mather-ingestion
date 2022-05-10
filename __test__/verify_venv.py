@@ -1,6 +1,6 @@
 import sys
 
 if sys.prefix == sys.base_prefix:
-    exit(1)
+    exit(f"not in venv ==> {sys.prefix} equals {sys.base_prefix}")
 else:
-    exit()
+    pass
