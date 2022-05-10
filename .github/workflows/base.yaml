@@ -48,8 +48,9 @@ jobs:
         run: source ./env/bin/activate
 
       # validates that we are in virtual environment
+      # /home/runner/work/mather-ingestion/mather-ingestion
       - name: verify venv
-        run: sudo ./__test__/verify_venv.py
+        run: python ./__test__/verify_venv.py
 
       # Runs a set of commands using the runners shell
       - name: install requirements.txt
