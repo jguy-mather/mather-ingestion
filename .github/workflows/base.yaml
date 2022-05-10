@@ -29,7 +29,7 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: '3.8.10'
-          cache: 'pip'
+          # cache: 'pip'
 
       # - name: cache installed libraries
       #   uses: actions/cache@v3
@@ -72,11 +72,10 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: '3.8.10'
-          cache: 'pip'
 
-      # # Runs a set of commands using the runners shell
-      # - name: install requirements.txt
-      #   run: pip install -r requirements.txt
+      # Runs a set of commands using the runners shell
+      - name: install requirements.txt
+        run: pip install -r requirements.txt
 
     # ----------------------------------------------------------------------- #
 
