@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deployment
+name: Deploy_Prod
 
 # Controls when the workflow will run
 on:
@@ -31,20 +31,51 @@ jobs:
           python-version: '3.8.10'
           cache: 'pip'
 
+      # - name: cache installed libraries
+      #   uses: actions/cache@v3
+      #   env:
+      #     cache-name: cache-node-modules
+      #   with:
+      #     path: ~/.pip
+      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('requirements.txt') }}
+
       # builds virtual environment for python executables
-      - name: build virtual environment
+      - name: build venv
         run: python -m venv env
 
       # activates virtual environment
-      - name: activate virtual environment
+      - name: activate venv
         run: source ./env/bin/activate
 
-      # testing to see if we are in venv
-      - name: where are we
-        run: |
-          pwd
-          ls -la
+      # validates that we are in virtual environment
+      - name: verify venv
+        run: ./__test__/verify_venv.py
 
       # Runs a set of commands using the runners shell
       - name: install requirements.txt
         run: pip install -r requirements.txt
+
+  validate:
+    needs: build
+
+      # ----------------------------------------------------------------------- #
+
+      # builds virtual environment for python executables
+      - name: build venv
+        run: python -m venv env
+
+      # activates virtual environment
+      - name: activate venv
+        run: source ./env/bin/activate
+
+      # Runs a set of commands using the runners shell
+      - name: install requirements.txt
+        run: pip install -r requirements.txt
+
+      # ----------------------------------------------------------------------- #
+
+      # force failure
+      - name: try to fail
+        run: exit 1
+      - name: verify failure
+        run: echo 'did we fail'
