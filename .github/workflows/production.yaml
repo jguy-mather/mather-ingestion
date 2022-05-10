@@ -20,7 +20,7 @@ env:
 jobs:
   # call base workflow which validates all envirnoment build requirements
   call-base:
-    uses: ./.github/workflows/base.yml
+    uses: ./.github/workflows/base.yaml
 
   validate:
     # indicating dependency
