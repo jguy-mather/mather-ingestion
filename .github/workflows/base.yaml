@@ -75,7 +75,7 @@ jobs:
 
       # builds virtual environment for python executables
       - name: build venv
-        run: python -m venv env
+        run: sudo python -m venv env
 
       # activates virtual environment
       - name: activate venv
