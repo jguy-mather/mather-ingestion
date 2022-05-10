@@ -13,10 +13,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# set environment variable to trigger review 
-env:
-  ENVIRONMENT: production
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # call base workflow which validates all envirnoment build requirements
@@ -31,7 +27,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    environment: '${{ env.ENVIRONMENT }}'
+    environment: production
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,18 +37,12 @@ jobs:
         with:
           python-version: '3.8.10'
 
-      - name: run env
-        run: env
-
       # Runs a set of commands using the runners shell
       - name: install requirements.txt
         run: pip install -r requirements.txt
 
     # ----------------------------------------------------------------------- #
 
-      # test pip cache
+      # run a test
       - name: some test
         run: python ./__test__/some_test.py
-
-      - name: test env
-        run: echo $ENVIRONMENT
