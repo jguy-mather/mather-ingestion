@@ -4,11 +4,19 @@ name: Deploy_Prod
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # Triggers the workflow on push or pull request events but only as specified
   push:
-    branches: [ main ]
+    branches: 
+      - main
+      - 'release/**'
+  
+  # should only be able to open PR from:
+  # - hotfix* -> main
+  # - release/0.2/bugfix/* -> release/0.2
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - 'release/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

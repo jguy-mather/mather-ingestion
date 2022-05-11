@@ -7,6 +7,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ development ]
+  
+  # should only be able to open PR from
+  # - feature/* -> development
+  # - release/* -> development
+  # - hotfix/* -> development
   pull_request:
     branches: [ development ]
 
