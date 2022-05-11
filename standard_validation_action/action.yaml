@@ -1,0 +1,14 @@
+name: Common Validation
+
+description: Run Environment-Agnostic Validation
+
+runs:
+  using: composite
+  steps:
+    - name: validation part 1
+      shell: bash
+      run: python ./__test__/validate_part1.py
+
+    - name: validation part 2
+      shell: bash
+      run: echo 'validate part 2'
