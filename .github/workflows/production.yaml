@@ -12,6 +12,7 @@ on:
   
   # should only be able to open PR from:
   # - hotfix* -> main
+  # - release/0.2* -> main
   # - release/0.2/bugfix/* -> release/0.2
   pull_request:
     branches:
